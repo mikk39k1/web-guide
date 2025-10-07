@@ -1,16 +1,16 @@
-import { getCurrentUser } from '@/lib/auth'
-import { redirect } from 'next/navigation'
-import { signOut } from '@/lib/auth/actions'
+import { getCurrentUser } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import { signOut } from "@/lib/auth/actions";
 
 export default async function DashboardPage() {
-  const user = await getCurrentUser()
+  const user = await getCurrentUser();
 
   if (!user) {
-    redirect('/login')
+    redirect("/login");
   }
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="h-full p-8">
       <div className="mx-auto max-w-4xl">
         <div className="mb-8 flex items-center justify-between">
           <h1 className="text-3xl font-bold">Dashboard</h1>
@@ -49,12 +49,21 @@ export default async function DashboardPage() {
           <ul className="list-inside list-disc space-y-2 text-sm text-gray-700">
             <li>Your authentication is set up with Supabase</li>
             <li>Database schema is configured with Drizzle ORM</li>
-            <li>Check out the API routes in <code className="rounded bg-gray-100 px-1 py-0.5">/app/api</code></li>
-            <li>Modify the schema in <code className="rounded bg-gray-100 px-1 py-0.5">/lib/drizzle/schema.ts</code></li>
-            <li>Run <code className="rounded bg-gray-100 px-1 py-0.5">npm run db:push</code> to sync your database</li>
+            <li>
+              Check out the API routes in{" "}
+              <code className="rounded bg-gray-100 px-1 py-0.5">/app/api</code>
+            </li>
+            <li>
+              Modify the schema in{" "}
+              <code className="rounded bg-gray-100 px-1 py-0.5">/lib/drizzle/schema.ts</code>
+            </li>
+            <li>
+              Run <code className="rounded bg-gray-100 px-1 py-0.5">npm run db:push</code> to sync
+              your database
+            </li>
           </ul>
         </div>
       </div>
     </div>
-  )
+  );
 }
